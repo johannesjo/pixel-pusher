@@ -143,6 +143,14 @@
       cursor: not-allowed;
     }
     
+    button.active {
+      background: #e74c3c;
+    }
+    
+    button.active:hover {
+      background: #c0392b;
+    }
+    
     .hidden {
       display: none;
     }
@@ -260,6 +268,9 @@
       
       <div class="control-group">
         <button id="toggleButton">Hide Overlay</button>
+        <button id="diffModeButton">Diff Mode</button>
+        <button id="noColorDiffButton">No Color Diff</button>
+        <button id="rulerModeButton">Ruler</button>
         <button id="clearButton">Clear Image</button>
         <button id="resetPositionButton">Reset Position</button>
       </div>
@@ -268,6 +279,9 @@
       <div class="shortcuts-info">
         <h4>Keyboard Shortcuts</h4>
         <div><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> - Toggle overlay visibility</div>
+        <div><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> - Toggle diff mode</div>
+        <div><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd> - Toggle no color diff mode</div>
+        <div><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> - Toggle ruler mode</div>
         <div><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd> - Adjust opacity (5% steps)</div>
         <div><kbd>AltGr</kbd> + <kbd>Shift</kbd> + <kbd>Arrow Keys</kbd> - Move overlay (1px steps)</div>
       </div>

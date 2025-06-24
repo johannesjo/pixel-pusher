@@ -1,18 +1,3 @@
 // Background script to relay messages between DevTools and content scripts
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type === 'updateOverlayFromPanel') {
-    // Forward message to all tabs
-    chrome.tabs.query({}, (tabs) => {
-      tabs.forEach(tab => {
-        if (tab.id) {
-          chrome.tabs.sendMessage(tab.id, {
-            type: 'updateOverlay',
-            state: message.state
-          }).catch(() => {
-            // Ignore errors for tabs where content script isn't injected
-          });
-        }
-      });
-    });
-  }
-});
+// For now, we'll use a simpler approach where the overlay state is global
+// but only the inspected tab shows the overlay
