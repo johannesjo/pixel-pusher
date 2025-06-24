@@ -25,8 +25,9 @@ const initializePanel = () => {
   const opacityInput = document.getElementById('opacityInput') as HTMLInputElement;
   const toggleButton = document.getElementById('toggleButton') as HTMLButtonElement;
   const clearButton = document.getElementById('clearButton') as HTMLButtonElement;
-  const currentImageInfo = document.getElementById('currentImageInfo') as HTMLElement;
-  const currentImageName = document.getElementById('currentImageName') as HTMLElement;
+  const imagePreviewContainer = document.getElementById('imagePreviewContainer') as HTMLElement;
+  const imagePreview = document.getElementById('imagePreview') as HTMLImageElement;
+  const imagePreviewName = document.getElementById('imagePreviewName') as HTMLElement;
   const offsetXSlider = document.getElementById('offsetXSlider') as HTMLInputElement;
   const offsetXInput = document.getElementById('offsetXInput') as HTMLInputElement;
   const offsetYSlider = document.getElementById('offsetYSlider') as HTMLInputElement;
@@ -36,11 +37,14 @@ const initializePanel = () => {
   const resetPositionButton = document.getElementById('resetPositionButton') as HTMLButtonElement;
 
   const updateCurrentImageDisplay = () => {
-    if (currentState.fileName) {
-      currentImageInfo.classList.remove('hidden');
-      currentImageName.textContent = currentState.fileName;
+    if (currentState.imageData && currentState.fileName) {
+      imagePreviewContainer.classList.remove('hidden');
+      imagePreview.src = currentState.imageData;
+      imagePreviewName.textContent = currentState.fileName;
+      dropZone.querySelector('p')!.textContent = 'Drop a new image or click to replace';
     } else {
-      currentImageInfo.classList.add('hidden');
+      imagePreviewContainer.classList.add('hidden');
+      dropZone.querySelector('p')!.textContent = 'Drop an image here or click to select';
     }
   };
 
