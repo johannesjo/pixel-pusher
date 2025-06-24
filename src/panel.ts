@@ -220,6 +220,55 @@ const initializePanel = () => {
     sendStateToContent();
   });
 
+  // Keyboard shortcuts for panel
+  document.addEventListener('keydown', (e) => {
+    // Alt+Shift+V to toggle visibility
+    if (e.altKey && e.shiftKey && e.key === 'V') {
+      e.preventDefault();
+      if (currentState.imageData) {
+        currentState.isVisible = !currentState.isVisible;
+        toggleButton.textContent = currentState.isVisible ? 'Hide Overlay' : 'Show Overlay';
+        saveState();
+        sendStateToContent();
+      }
+    }
+    
+    // Alt+Shift+Arrow keys to adjust opacity
+    if (e.altKey && e.shiftKey && !e.ctrlKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+      e.preventDefault();
+      if (currentState.imageData) {
+        const step = 5;
+        if (e.key === 'ArrowUp') {
+          updateOpacity((currentState.opacity + step).toString());
+        } else if (e.key === 'ArrowDown') {
+          updateOpacity((currentState.opacity - step).toString());
+        }
+      }
+    }
+    
+    // AltGr+Shift+Arrow keys to move overlay (AltGr triggers both altKey and ctrlKey)
+    if (e.altKey && e.ctrlKey && e.shiftKey && e.key.startsWith('Arrow')) {
+      e.preventDefault();
+      if (currentState.imageData) {
+        const step = 1;
+        switch(e.key) {
+          case 'ArrowLeft':
+            updateOffsetX((currentState.offsetX - step).toString());
+            break;
+          case 'ArrowRight':
+            updateOffsetX((currentState.offsetX + step).toString());
+            break;
+          case 'ArrowUp':
+            updateOffsetY((currentState.offsetY - step).toString());
+            break;
+          case 'ArrowDown':
+            updateOffsetY((currentState.offsetY + step).toString());
+            break;
+        }
+      }
+    }
+  });
+
   loadStoredState();
 };
 

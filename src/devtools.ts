@@ -1,8 +1,8 @@
 chrome.devtools.panels.create(
-  "Image Overlay",
+  "Pixel Pusher",
   "icon.png",
   "panel.html",
   (panel) => {
-    console.log("Image Overlay panel created");
+    console.log("Pixel Pusher panel created");
   }
 );

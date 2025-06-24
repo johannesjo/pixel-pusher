@@ -135,8 +135,8 @@ document.addEventListener('keydown', (e) => {
     });
   }
   
-  // Alt+Shift+Ctrl+Arrow keys to move overlay
-  if (e.altKey && e.shiftKey && e.ctrlKey && (e.key.startsWith('Arrow'))) {
+  // AltGr+Shift+Arrow keys to move overlay (AltGr triggers both altKey and ctrlKey)
+  if (e.altKey && e.ctrlKey && e.shiftKey && (e.key.startsWith('Arrow'))) {
     e.preventDefault();
     chrome.storage.local.get(['overlayState'], (result) => {
       if (result.overlayState && result.overlayState.imageData) {
