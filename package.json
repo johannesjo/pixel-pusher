@@ -1,0 +1,13 @@
+{
+  "name": "pixel-pusher",
+  "version": "1.0.0",
+  "description": "Chrome DevTools extension for image overlays",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.254",
+    "typescript": "^5.3.3"
+  }
+}
