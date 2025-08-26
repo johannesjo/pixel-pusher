@@ -5,7 +5,13 @@
       "Bash(npm install)",
       "Bash(git init:*)",
       "Bash(mv:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(rg:*)",
+      "Bash(sed:*)",
+      "Bash(git restore:*)",
+      "Bash(node:*)",
+      "Bash(convert:*)",
+      "Bash(python3:*)"
     ],
     "deny": []
   }

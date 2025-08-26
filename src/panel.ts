@@ -182,7 +182,9 @@ const initializePanel = () => {
   });
 
   const updateOpacity = (value: string) => {
-    const opacity = Math.max(0, Math.min(100, parseInt(value) || 0));
+    // Replace comma with dot to support both decimal separators
+    const normalizedValue = value.replace(',', '.');
+    const opacity = Math.max(0, Math.min(100, parseFloat(normalizedValue) || 0));
     currentState.opacity = opacity;
     opacitySlider.value = opacity.toString();
     opacityInput.value = opacity.toString();
@@ -267,7 +269,7 @@ const initializePanel = () => {
   });
 
   const updateOffsetX = (value: string) => {
-    const offsetX = Math.max(-500, Math.min(500, parseInt(value) || 0));
+    const offsetX = Math.max(-1400, Math.min(1400, parseInt(value) || 0));
     currentState.offsetX = offsetX;
     offsetXSlider.value = offsetX.toString();
     offsetXInput.value = offsetX.toString();
@@ -276,7 +278,7 @@ const initializePanel = () => {
   };
 
   const updateOffsetY = (value: string) => {
-    const offsetY = Math.max(-500, Math.min(500, parseInt(value) || 0));
+    const offsetY = Math.max(-1400, Math.min(1400, parseInt(value) || 0));
     currentState.offsetY = offsetY;
     offsetYSlider.value = offsetY.toString();
     offsetYInput.value = offsetY.toString();
@@ -285,7 +287,9 @@ const initializePanel = () => {
   };
 
   const updateScale = (value: string) => {
-    const scale = Math.max(10, Math.min(200, parseInt(value) || 100));
+    // Replace comma with dot to support both decimal separators
+    const normalizedValue = value.replace(',', '.');
+    const scale = Math.max(10, Math.min(200, parseFloat(normalizedValue) || 100));
     currentState.scale = scale;
     scaleSlider.value = scale.toString();
     scaleInput.value = scale.toString();
